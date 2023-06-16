@@ -1,8 +1,6 @@
 package hibernate.demo.v2;
 
 import hibernate.demo.v2.entity.User;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy;
 import org.hibernate.cfg.Configuration;
 
@@ -15,8 +13,8 @@ public class HibernateRunner {
         var configuration = new Configuration();
         configuration.configure(); // знаходить hibernate.cfg.xml або в параметрах іншший path
         //додаємо User класс в sessionFactory або в  hibernate.cfg.xml  <mapping class="hibernate.demo.v2.entity.User"></mapping>
-        configuration.addAnnotatedClass(User.class);
-        configuration.setPhysicalNamingStrategy(new CamelCaseToUnderscoresNamingStrategy());
+        //configuration.addAnnotatedClass(User.class);
+        configuration.setPhysicalNamingStrategy(new CamelCaseToUnderscoresNamingStrategy()); //allow map birthDate то birth_date
 
         try (var sessionFactory = configuration.buildSessionFactory();
              var session = sessionFactory.openSession()
