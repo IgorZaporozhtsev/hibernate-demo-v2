@@ -1,0 +1,28 @@
+plugins {
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+dependencies {
+    annotationProcessor 'org.projectlombok:lombok:1.18.26'
+    compileOnly 'org.projectlombok:lombok:1.18.26'            //compile
+    runtimeOnly 'org.postgresql:postgresql:42.6.0'            //runtime
+    implementation 'org.hibernate:hibernate-core:6.2.5.Final' //compile and runtime
+
+
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.26'
+    testCompileOnly 'org.projectlombok:lombok:1.18.26'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.1'
+}
+
+application {
+    mainClass = 'hibernate.demo.v2.App'
+}
